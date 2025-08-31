@@ -1,0 +1,20 @@
+{
+  "name": "projectmanagement",
+  "version": "1.0.0",
+  "description": "A simple project management app - Backend Project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "Backend",
+    "udemy",
+    "Learning"
+  ],
+  "author": "Vansh Arora",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
