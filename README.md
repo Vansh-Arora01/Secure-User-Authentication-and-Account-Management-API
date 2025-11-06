@@ -220,3 +220,40 @@ This demonstrates the multi-step "Forgot Password" flow, which relies on secure,
 > This demonstrates an authenticated user changing their own password. They must provide their old password and a new one. This proves the verifyJWT middleware is active on this route as well.
 >
 > ![API HealthCheck](/.github/images/postman-healthcheck.png)
+
+---
+
+
+ ## **💡 Future Enhancements & Roadmap**
+
+
+* **Implement Full-Stack Application**
+    * Build a complete frontend using **React** (or Vue.js) that consumes this API.
+    * Create all UI components: **Login/Register pages**, a **Protected Dashboard**, and **User Profile** pages.
+    * Implement a robust **silent token refresh flow** on the frontend to handle `401 Unauthorized` errors and automatically fetch new access tokens.
+    * Build the full UI flow for **Password Reset**, including the "Forgot Password" email form and the "Reset Password" token form.
+
+* **Role-Based Access Control (RBAC)**
+    * Extend the User model with a `role` field (e.g., `user`, `admin`, `moderator`).
+    * Create new `verifyAdmin` middleware to protect admin-only endpoints.
+    * Build out an admin dashboard API for managing users (list, ban, change roles, etc.).
+
+### Production & DevOps Enhancements
+
+* **Cloud Storage for File Uploads**
+    * Fully implement the `avatar` upload feature.
+    * Integrate **Multer** for handling `multipart/form-data` and **Cloudinary** (or AWS S3) for cloud-based image storage. This ensures user uploads don't get saved to the server's local disk.
+
+* **Containerization**
+    * Write a **`Dockerfile`** to containerize the Node.js application.
+    * Create a **`docker-compose.yml`** file to orchestrate the entire development environment (Node app + MongoDB database) with a single command (`docker-compose up`).
+
+
+---
+
+## **👨‍💻 Author**
+
+- **VANSH ARORA**
+- 🎓 B.Tech CSE |Prefinal-Student | Aspiring Softaware Engineer
+- 🔗 [LinkedIn](https://www.linkedin.com/in/vansh-arora01)
+ 
