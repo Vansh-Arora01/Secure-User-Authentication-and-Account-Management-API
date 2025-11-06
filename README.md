@@ -158,8 +158,8 @@ MAIL_PASS=your_smtp_password
 | POST   | /login | Validation: userLoginValidator | Log in a user and receive tokens. | ✅ Live |
 | POST   | /refresh-token | HttpOnly Cookie required | Get a new Access Token. | ✅ Live |
 | POST   | /forgot-password | Validation: userForgotPasswordValidator | Send a password reset email. | ✅ Live |
-| GET    | /verify-email/:vToken | Token Check | Verify a user's email address. | ⏳ Planned |
-| POST   | /reset-password/:rToken | Validation: userResetForgotPasswordValidator | Set a new password. | ⏳ Planned |
+| GET    | /verify-email/:vToken | Token Check | Verify a user's email address. | ✅ Live |
+| POST   | /reset-password/:rToken | Validation: userResetForgotPasswordValidator | Set a new password. | ✅ Live |
 
 ---
 
