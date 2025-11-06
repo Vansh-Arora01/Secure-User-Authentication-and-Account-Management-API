@@ -178,3 +178,45 @@ These routes require a valid Authorization: Bearer <accessToken> header and are 
 ---
 ## 🚀 Live Showcase (Postman)
 
+**This isn't just a list of features; it's tangible proof of the API's security, validation, and functionality. The system is tested from the simplest health check to the multi-step secure authentication flow.**
+
+[Click here to download the Postman Collection & Environment] (Link your exported .json files)
+
+- ### Proof 1: API Health & Response Structure
+Before any logic, we confirm the server is online and see its standard response format.
+
+**Example:** `GET /api/v1/healthcheck`
+> A simple request to the health check endpoint. This confirms the server is running and shows the consistent JSON response wrapper (`statusCode`, `data`, `message`, `success`) that is used for *all* API responses.
+>
+> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+
+- ### Proof 2: Server-Side Input Validation
+This API is secure-by-design. It rejects invalid data before it ever touches the database or controllers.
+**Example:** `POST /api/v1/auth/register  (400 Bad Request)`
+> A POST /register request with an invalid email and a short password. The API correctly returns a 400 Bad Request with a clear, array-based error message, as defined in the userRegisterValidator.
+>
+> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+- ### Proof 3: The Complete Authentication Flow (JWT)
+This sequence demonstrates the core security model: Login, access a protected route, and Logout.
+- Step 1: Login & Token Generation
+A successful POST /login with correct credentials. The Tests tab in Postman (not shown) would capture the accessToken and save it to an environment variable for the next requests. The refreshToken is automatically set as a secure HttpOnly cookie.
+
+- Step 2: Accessing a Protected Route (The verifyJWT test)
+Access Denied (No Token): An attempt to access GET /current-user without the Authorization: Bearer <token> header. The verifyJWT middleware correctly intercepts and returns a 401 Unauthorized.
+
+Access Granted (With Token): The same request, now with the accessToken automatically added. The request succeeds and returns the user's profile.
+
+- Step 3: Logout & Token Invalidation
+A POST /logout request. The server's verifyJWT middleware first confirms the user is valid, then the controller clears the HttpOnly refresh token cookie, securely ending the session.
+>
+> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+
+- ### Proof 4: Secure Password Management
+This demonstrates the multi-step "Forgot Password" flow, which relies on secure, short-lived tokens.
+
+**Example:** `POST /forgot-password`
+> A user provides their email. The API generates a unique, single-use reset token, saves its hash to the database, and emails the user a reset link (not shown).
+**Example:** `POST /change-password`
+> This demonstrates an authenticated user changing their own password. They must provide their old password and a new one. This proves the verifyJWT middleware is active on this route as well.
+>
+> ![API HealthCheck](/.github/images/postman-healthcheck.png)
