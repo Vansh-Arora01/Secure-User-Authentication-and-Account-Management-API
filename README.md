@@ -188,39 +188,74 @@ Before any logic, we confirm the server is online and see its standard response 
 **Example:** `GET /api/v1/healthcheck`
 > A simple request to the health check endpoint. This confirms the server is running and shows the consistent JSON response wrapper (`statusCode`, `data`, `message`, `success`) that is used for *all* API responses.
 >
-> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+> ![API HealthCheck](./src/postman/healthcheck.png)
 
 - ### Proof 2: Server-Side Input Validation
 This API is secure-by-design. It rejects invalid data before it ever touches the database or controllers.
 **Example:** `POST /api/v1/auth/register  (400 Bad Request)`
 > A POST /register request with an invalid email and a short password. The API correctly returns a 400 Bad Request with a clear, array-based error message, as defined in the userRegisterValidator.
 >
-> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+> ![API Register(Error)](./src/postman/Register(error).png)
+> A POST /register request with an valid email and a short password. The API correctly returns a 200 Success Request with a clear, array-based Success message, as defined in the userRegisterValidator.
+> ![API Register(Success)](./src/postman/Register(success).png)
+> **The email appears in Mailtrap, containing the welcome message and the verification link.**
+> ![Mailtrap Verify Email Message](./src/postman/mailtrap(verifyemail).png)
+
 - ### Proof 3: The Complete Authentication Flow (JWT)
 This sequence demonstrates the core security model: Login, access a protected route, and Logout.
 - Step 1: Login & Token Generation
 A successful POST /login with correct credentials. The Tests tab in Postman (not shown) would capture the accessToken and save it to an environment variable for the next requests. The refreshToken is automatically set as a secure HttpOnly cookie.
+**Example** `(POST /api/v1/auth/login)`
+> ![API login](./src/postman/login(success).png)
 
 - Step 2: Accessing a Protected Route (The verifyJWT test)
 Access Denied (No Token): An attempt to access GET /current-user without the Authorization: Bearer <token> header. The verifyJWT middleware correctly intercepts and returns a 401 Unauthorized.
-
+> ![Current user](./src/postman/getuser(error).png)
 Access Granted (With Token): The same request, now with the accessToken automatically added. The request succeeds and returns the user's profile.
+ ![Current user](./src/postman/getcurrentuser.png)
 
 - Step 3: Logout & Token Invalidation
 A POST /logout request. The server's verifyJWT middleware first confirms the user is valid, then the controller clears the HttpOnly refresh token cookie, securely ending the session.
 >
-> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+> ![API logout](./src/postman/logout(success).png)
 
 - ### Proof 4: Secure Password Management
 This demonstrates the multi-step "Forgot Password" flow, which relies on secure, short-lived tokens.
 
 **Example:** `POST /forgot-password`
 > A user provides their email. The API generates a unique, single-use reset token, saves its hash to the database, and emails the user a reset link (not shown).
+> ![API Forgot-password](./src/postman/forgotpassword.png)
 **Example:** `POST /change-password`
 > This demonstrates an authenticated user changing their own password. They must provide their old password and a new one. This proves the verifyJWT middleware is active on this route as well.
 >
-> ![API HealthCheck](/.github/images/postman-healthcheck.png)
+> ![API Change-password](./src/postman/changeuserpassword.png)
 
+### Proof 5: User Account Utilities
+This shows the complete, user-friendly management flows.
+
+**Example 1: Forgot Password Request**
+> A user provides their email. The API generates a unique, single-use reset token and emails the user a reset link.
+>
+> ![Forgot Password Request](./src/postman/forgotpassword.png)
+> **This triggers the password reset email, captured in Mailtrap, which includes the secure, one-time-use reset link.**
+> ![Reset Password Email](./src/postman/mailtrap(resetpassword).png)
+
+**Example 2: Resend Email Verification**
+> An authenticated user (who, for example, closed the tab) can request a new verification email. This proves the `verifyJWT` middleware is also protecting this utility endpoint.
+>
+> ![Resend Email Verification](./src/postman/resendemail.png)
+> **A new, fresh verification email is then delivered to Mailtrap, proving the utility works as expected.**
+> ![Resend Email Verification](./src/postman/mailtrap(verifyemail).png)
+
+### Proof 6: Seamless Session Refresh (Token Rotation)
+This demonstrates the `HttpOnly` refresh token in action, allowing the user to get a new access token without re-entering their password.
+
+**Example:** `POST /api/v1/auth/refresh-token`
+> 1.  First, the user logs in (as shown in Proof 3), and the `refreshToken` is stored in the Postman cookie jar.
+> 2.  Then, this request is sent *without* any `Authorization` header. The server reads the secure `HttpOnly` cookie.
+> 3.  The server validates the refresh token and issues a *new* `accessToken` and a new `refreshToken`, which proves the token rotation is working.
+>
+> ![Refresh Token Success](./src/postman/refereshaccestoken.png)
 ---
 
 
