@@ -51,7 +51,7 @@ const emailVerificationMailgenContent = (username, verificationurl) => {
     return {
         body: {
             name: username,
-            intro: "Welcome to ur chai making process",
+            intro: "Welcome to our Auth and Account Management Platform",
             action: {
                 instructions: "To verify your email Please click on the following button",
                 button: {
@@ -60,7 +60,7 @@ const emailVerificationMailgenContent = (username, verificationurl) => {
                     link: verificationurl
                 },
             },
-            outro: "Need Help or have Questions? just reply to email , we are to help"
+            outro: "Need Help or have Questions ? Just reply to email , We are ready to help"
 
         },
     }
@@ -70,7 +70,7 @@ const forgotPasswordMailgenContent = (username, passwordReseturl) => {
     return {
         body: {
             name: username,
-            intro: "We got request to reset your password",
+            intro: "We got your request to reset your password",
             action: {
                 instructions: "To reset your password Please click on the following button",
                 button: {
@@ -79,7 +79,7 @@ const forgotPasswordMailgenContent = (username, passwordReseturl) => {
                     link: passwordReseturl
                 },
             },
-            outro: "Need Help or have Questions? just reply to email , we are to help"
+            outro: "Need Help or have Questions? Just reply to email , We are ready to help"
 
         },
     }

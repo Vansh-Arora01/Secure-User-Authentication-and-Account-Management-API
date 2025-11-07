@@ -59,6 +59,8 @@ const registerUser = asynchandler(async (req, res) => {
     user.emailVerificationExpiry = tokenExpiry;
    console.log(user)
     await user.save({ validateBeforeSave: false });
+    console.log("Saved user token in DB (hashed):", user.emailVerificationToken);
+    console.log(user)
 
 
     await sendEmail({
@@ -170,64 +172,107 @@ const getCurrentUser = asynchandler(async (req, res) => {
         )
 
 })
+// const verifyEmail = asynchandler(async (req, res) => {
+//     const { verificationToken } = req.params
+
+//     if (!verificationToken) {
+//         return new ApiError(400, "Email verification Token Is Missing!!")
+//     }
+
+
+//     // here we know that we are saving a hashed token in database and unhashed  token 
+//     // to use while crreating the user , So as we know that if we hashed the token same it will return the same hashed token that is 
+//     // store in db then we check it and get result 
+
+
+//     let hashedToken = crypto
+//         .createHash("sha256")
+//         .update(verificationToken)
+//         .digest("hex")
+
+//     const user = await User.findOne({
+//         emailVerificationToken: hashedToken,
+//         //  here one more think to take care about 
+//         //the expiry of the token so check that also 
+
+
+//         // WHENEVER HAVE TO WRITE A CONDITION WRITE IN {} BRACES
+
+//         emailVerificationExpiry: { $gt: Date.now() }
+//     })
+
+//     if (!user) {
+//         return new ApiError(400, "Email verification Token Is Incorrect or Expired !!")
+//     }
+
+
+
+//     user.emailVerificationExpiry = undefined;
+//     user.emailVerificationToken = undefined;
+//     /** NOW AS THE USER MODULE OR SCHEMA HAVE THE DATA SAME , SO IT IS A BETTER PRACTICE TO REMOVE THE
+//      * UNNECESSARY DATA FROM THAT MODULE AS EMAILVERIFICQATION TOKEN  AND EMAILVERIFICATIONTOKENEXPIRY
+//      */
+//     user.isEmailVerified = true
+//     await user.save({ validateBeforeSave: false })
+
+
+//     return res
+//         .status(200)
+//         .json(
+//             new ApiResponse(
+//                 200,
+//                 {
+//                     isEmailVerified: true,
+//                 },
+//                 "Email verifiaction Is Successfull"
+//             )
+//         )
+
+
+// })
 const verifyEmail = asynchandler(async (req, res) => {
-    const { verificationToken } = req.params
+  const { verificationToken } = req.params;
 
-    if (!verificationToken) {
-        return new ApiError(400, "Email verification Token Is Missing!!")
-    }
+  if (!verificationToken) {
+    return res.status(400).json(
+      new ApiError(400, "Email verification Token is missing!!")
+    );
+  }
 
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(verificationToken)
+    .digest("hex");
 
-    // here we know that we are saving a hashed token in database and unhashed  token 
-    // to use while crreating the user , So as we know that if we hashed the token same it will return the same hashed token that is 
-    // store in db then we check it and get result 
+  console.log("🔍 Hashed Token:", hashedToken);
 
+  const user = await User.findOne({
+    emailVerificationToken: hashedToken,
+    emailVerificationExpiry: { $gt: Date.now() },
+  });
 
-    let hashedToken = crypto
-        .createHash("sha256")
-        .update(verificationToken)
-        .digest("hex")
+  if (!user) {
+    return res.status(400).json(
+      new ApiError(400, "Email verification Token is incorrect or expired!!")
+    );
+  }
 
-    const user = await User.findOne({
-        emailVerificationToken: hashedToken,
-        //  here one more think to take care about 
-        //the expiry of the token so check that also 
+  user.emailVerificationExpiry = undefined;
+  user.emailVerificationToken = undefined;
+  user.isEmailVerified = true;
+  await user.save({ validateBeforeSave: false });
 
+  console.log("✅ Email verified for:", user.email);
 
-        // WHENEVER HAVE TO WRITE A CONDITION WRITE IN {} BRACES
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      { isEmailVerified: true },
+      "Email verification is successful!"
+    )
+  );
+});
 
-        emailVerificationExpiry: { $gt: Date.now() }
-    })
-
-    if (!user) {
-        return new ApiError(400, "Email verification Token Is Incorrect or Expired !!")
-    }
-
-
-
-    user.emailVerificationExpiry = undefined;
-    user.emailVerificationToken = undefined;
-    /** NOW AS THE USER MODULE OR SCHEMA HAVE THE DATA SAME , SO IT IS A BETTER PRACTICE TO REMOVE THE
-     * UNNECESSARY DATA FROM THAT MODULE AS EMAILVERIFICQATION TOKEN  AND EMAILVERIFICATIONTOKENEXPIRY
-     */
-    user.isEmailVerified = true
-    await user.save({ validateBeforeSave: false })
-
-
-    return res
-        .status(200)
-        .json(
-            new ApiResponse(
-                200,
-                {
-                    isEmailVerified: true,
-                },
-                "Email verifiaction Is Successfull"
-            )
-        )
-
-
-})
 const resendEmailVerification = asynchandler(async (req, res) => {
     const user = await User.findById(req.user?._id)
     if (!user) {
