@@ -1,0 +1,915 @@
+{
+	"info": {
+		"_postman_id": "10cc48ee-f779-4d11-a89d-ff3e287276b4",
+		"name": "Secure-User-Authentication-and-Account-Management-API",
+		"description": "StartFragmentAn enterprise-ready, secure-by-design authentication and authorization API built with a modern stack. This backend system provides a complete, battle-tested solution for user management, from registration to secure password resets, all secured by a state-of-the-art JWT and refresh token strategy.EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48079924",
+		"_collection_link": "https://vansharora0112-1094779.postman.co/workspace/dbf9bc90-03bf-448d-802f-fec82a8898b3/collection/48079924-10cc48ee-f779-4d11-a89d-ff3e287276b4?action=share&source=collection_link&creator=48079924"
+	},
+	"item": [
+		{
+			"name": "HealthCheck",
+			"item": [
+				{
+					"name": "HealthCheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{projManagemenet}}/api/v1/healthcheck/",
+							"host": [
+								"{{projManagemenet}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"healthcheck",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "healthcheck",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/healthcheck/",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"healthcheck",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "97"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"61-aTFOUOo04/vQsmSSrWnWHGdflt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Nov 2025 16:22:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"message\": \"Server is running fast\"\n    },\n    \"message\": \"Success\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register New User Account (POST /api/v1/auth/register)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"two\",\r\n    \"email\":\"two@two.com\",\r\n    \"password\":\"23456789\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codecampy}}/api/v1/auth/register",
+							"host": [
+								"{{codecampy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Creates a new user account with email and password. Returns user profile and verification instructions."
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"two\",\r\n    \"email\":\"two@two.com\",\r\n    \"password\":\"23456789\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/register",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "337"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"151-CC/fInQswTE1vcjODwFBCFZX+A8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Nov 2025 17:27:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6908e618e8658e4abd45cc5a\",\n            \"avatar\": {\n                \"url\": \"https://placehold.co/200x200\",\n                \"localPath\": \"\",\n                \"_id\": \"6908e618e8658e4abd45cc59\"\n            },\n            \"username\": \"two\",\n            \"email\": \"two@two.com\",\n            \"isEmailVerified\": false,\n            \"__v\": 0\n        }\n    },\n    \"message\": \"User registered SuccessFully and verification Email is sent on Your Email\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Authenticate User & Issue Tokens (POST /api/v1/auth/login)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"username\":\"one\",\r\n    \"email\":\"one@one.com\",\r\n    \"password\":\"123458\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{codecampy}}/api/v1/auth/login",
+							"host": [
+								"{{codecampy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Authenticates user credentials and issues access/refresh tokens."
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n    \"username\":\"one\",\r\n    \"email\":\"one@one.com\",\r\n    \"password\":\"23456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/login",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA4ZTVjZGU4NjU4ZTRhYmQ0NWNjNTIiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidXNlck5hbWUiOiJvbmUiLCJpYXQiOjE3NjIxOTE0OTUsImV4cCI6MTc2MjI3Nzg5NX0.FdFfh0KrngmtOS8RUQ8WEMRElH2-ggtzI8HPDE8WEPI; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA4ZTVjZGU4NjU4ZTRhYmQ0NWNjNTIiLCJpYXQiOjE3NjIxOTE0OTUsImV4cCI6MTc2MzA1NTQ5NX0.DW-DdY1QaXrfbNBerVmURn2ZFKuIOhBmqDF2JgJP_nY; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "720"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d0-UjTQXG3uqbofgfBRSvL4NLndOo8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Nov 2025 17:38:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6908e5cde8658e4abd45cc52\",\n            \"avatar\": {\n                \"url\": \"https://placehold.co/200x200\",\n                \"localPath\": \"\",\n                \"_id\": \"6908e5cde8658e4abd45cc51\"\n            },\n            \"username\": \"one\",\n            \"email\": \"one@one.com\",\n            \"isEmailVerified\": false,\n            \"__v\": 0\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA4ZTVjZGU4NjU4ZTRhYmQ0NWNjNTIiLCJlbWFpbCI6Im9uZUBvbmUuY29tIiwidXNlck5hbWUiOiJvbmUiLCJpYXQiOjE3NjIxOTE0OTUsImV4cCI6MTc2MjI3Nzg5NX0.FdFfh0KrngmtOS8RUQ8WEMRElH2-ggtzI8HPDE8WEPI\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA4ZTVjZGU4NjU4ZTRhYmQ0NWNjNTIiLCJpYXQiOjE3NjIxOTE0OTUsImV4cCI6MTc2MzA1NTQ5NX0.DW-DdY1QaXrfbNBerVmURn2ZFKuIOhBmqDF2JgJP_nY\"\n    },\n    \"message\": \"User Logged in succefully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Success — 200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\": \"user@example.com\", \"password\": \"Passw0rd!\"}",
+									"options": {
+										"raw": "json"
+									}
+								},
+								"url": {
+									"raw": "/api/v1/auth/login",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"refresh_token\": \"def50200a9b3...\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600,\n  \"user\": {\n    \"id\": \"2f9b6d1e-4a4c-4c1d-9de3-8c0f9e2e7c11\",\n    \"email\": \"user@example.com\",\n    \"name\": \"Vansh Arora\",\n    \"roles\": [\"user\"]\n  }\n}"
+						},
+						{
+							"name": "Error — 401 Invalid credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\": \"user@example.com\", \"password\": \"wrongpassword\"}",
+									"options": {
+										"raw": "json"
+									}
+								},
+								"url": {
+									"raw": "/api/v1/auth/login",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"error\": \"invalid_credentials\",\n  \"message\": \"Email or password is incorrect.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify User Email Address (GET /api/v1/auth/verify-email)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{projManagemenet}}/api/v1/auth/verify-email/:verificationToken",
+							"host": [
+								"{{projManagemenet}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify-email",
+								":verificationToken"
+							],
+							"variable": [
+								{
+									"key": "verificationToken",
+									"value": "1b25c0d10ee5e994139f3a7bdfefc4571518aee4"
+								}
+							]
+						},
+						"description": "Verifies a user's email using a token sent via email. Activates the account upon success."
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Access Token (GET /api/v1/auth/refresh-token)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Exchanges a valid refresh token for a new access token."
+					},
+					"response": [
+						{
+							"name": "Refresh Access Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/refresh-token",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA5ZjY5Njc3ZTI5MmZmMmYzYjkyYTgiLCJlbWFpbCI6InRocmVlQHRocmVlLmNvbSIsInVzZXJOYW1lIjoidGhyZWUiLCJpYXQiOjE3NjIyNjA4OTYsImV4cCI6MTc2MjM0NzI5Nn0.AFQb7IH6WHkF5IYG7QtTsDxyPzzal5C4U4D4Yl7jgKw; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA5ZjY5Njc3ZTI5MmZmMmYzYjkyYTgiLCJpYXQiOjE3NjIyNjA4OTYsImV4cCI6MTc2MzEyNDg5Nn0.xpghnPIEqIRo8fhb7-U_0bZF2QDv8_oMF_6hFFiDZlY; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "514"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"202-Tkt1kaAD0d+v1kN8Tq9K87meE8c\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 12:54:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA5ZjY5Njc3ZTI5MmZmMmYzYjkyYTgiLCJlbWFpbCI6InRocmVlQHRocmVlLmNvbSIsInVzZXJOYW1lIjoidGhyZWUiLCJpYXQiOjE3NjIyNjA4OTYsImV4cCI6MTc2MjM0NzI5Nn0.AFQb7IH6WHkF5IYG7QtTsDxyPzzal5C4U4D4Yl7jgKw\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTA5ZjY5Njc3ZTI5MmZmMmYzYjkyYTgiLCJpYXQiOjE3NjIyNjA4OTYsImV4cCI6MTc2MzEyNDg5Nn0.xpghnPIEqIRo8fhb7-U_0bZF2QDv8_oMF_6hFFiDZlY\"\n    },\n    \"message\": \"Access Refresh Token\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout & Invalidate Session (GET /api/v1/auth/logout)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Revokes the active session and invalidates refresh tokens."
+					},
+					"response": [
+						{
+							"name": "Logout & Invalidate Session",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/logout",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-ESN6B5+7eBI7iRVs/ddhd+cotk4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 12:57:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"UserLogged OUT\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Current User Profile (GET /api/v1/auth/me)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Returns the authenticated user's profile and roles based on the bearer token."
+					},
+					"response": [
+						{
+							"name": "Retrieve Current User Profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/current-user",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"current-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-6OpAOL89IbWCJKnZrC2uhZheIKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 12:58:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6908e5cde8658e4abd45cc52\",\n        \"avatar\": {\n            \"url\": \"https://placehold.co/200x200\",\n            \"localPath\": \"\",\n            \"_id\": \"6908e5cde8658e4abd45cc51\"\n        },\n        \"username\": \"one\",\n        \"email\": \"one@one.com\",\n        \"isEmailVerified\": false,\n        \"__v\": 0\n    },\n    \"message\": \"Current User Fetched Successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Initiate Password Reset (GET /api/v1/auth/forgot-password)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Initiates password reset flow and emails a reset link to the user."
+					},
+					"response": [
+						{
+							"name": "Initiate Password Reset",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"one@one.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/Forgot-password",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"Forgot-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-V+OBL6x+HZyBYeD+OYSJjAP7Z5U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 13:09:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Password Reset link email is sent \",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Complete Password Reset (GET /api/v1/auth/reset-password)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Resets the user's password using a reset token."
+					},
+					"response": []
+				},
+				{
+					"name": "Change User Password (GET /api/v1/auth/change-password)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Changes the current password for an authenticated user."
+					},
+					"response": [
+						{
+							"name": "Change User Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\":\"23456789\",\r\n    \"newPassword\":\"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/change-password",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-OwHk6iGdk7So5dHsFNsA7r4wMDk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 13:18:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Password changed Successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Resend-Email-verification - Auth-Operation (needs review) (GET /api/v1/auth/...)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Placeholder request. Purpose unknown—review and update or delete."
+					},
+					"response": [
+						{
+							"name": "Resend-Email-verification - Auth-Operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{projManagemenet}}/api/v1/auth/resend-email-verification",
+									"host": [
+										"{{projManagemenet}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"resend-email-verification"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-YgazhDv16npbwc0IOmPzdZHYG4g\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Nov 2025 13:19:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Mail is sent to your email id\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"description": "Authentication and Authorization endpoints: register, login, email verification, token refresh, session logout, current user info, and password management (forgot/reset/change). Use the {{ProjManagement}} base URL and environment variables for tokens. Folder-level tests/scripts can be added here to apply across child requests."
+		}
+	]
+}
