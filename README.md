@@ -23,8 +23,8 @@ An enterprise-ready, secure-by-design authentication and authorization API built
 * [⚙️ Environment Configuration](#️-environment-configuration)
 * [🔬 API Endpoints Deep-Dive](#-api-endpoints-deep-dive)
 * [🚀 Live Showcase (Postman,Mailtrap)](#-live-showcase-postman)
-* [💡 Future Enhancements & Roadmap](#future-enhancements--roadmap)
-* [👨‍💻 Author](#author)
+* [💡 Future Enhancements & Roadmap](#-future-enhancements--roadmap)
+* [👨‍💻 Author](#-author)
 
 ---
 
