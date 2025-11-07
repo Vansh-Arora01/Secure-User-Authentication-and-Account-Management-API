@@ -180,7 +180,7 @@ These routes require a valid Authorization: Bearer <accessToken> header and are 
 
 **This isn't just a list of features; it's tangible proof of the API's security, validation, and functionality. The system is tested from the simplest health check to the multi-step secure authentication flow.**
 
-[Click here to download the Postman Collection & Environment] (Link your exported .json files)
+[Click here to download the Postman Collection & Environment](Link your exported .json files)
 
 - ### Proof 1: API Health & Response Structure
 Before any logic, we confirm the server is online and see its standard response format.
@@ -196,7 +196,7 @@ This API is secure-by-design. It rejects invalid data before it ever touches the
 > A POST /register request with an invalid email and a short password. The API correctly returns a 400 Bad Request with a clear, array-based error message, as defined in the userRegisterValidator.
 >
 > ![API Register(Error)](./src/postman/Register(error).png)
-> A POST /register request with an valid email and a short password. The API correctly returns a 200 Success Request with a clear, array-based Success message, as defined in the userRegisterValidator.
+> A POST /register request should be a valid email and a short password. The API correctly returns a 200 Success Request with a clear, array-based Success message, as defined in the userRegisterValidator.
 > ![API Register(Success)](./src/postman/Register(success).png)
 > **The email appears in Mailtrap, containing the welcome message and the verification link.**
 > ![Mailtrap Verify Email Message](./src/postman/mailtrap(verifyemail).png)
@@ -289,6 +289,6 @@ This demonstrates the `HttpOnly` refresh token in action, allowing the user to g
 ## **👨‍💻 Author**
 
 - **VANSH ARORA**
-- 🎓 B.Tech CSE |Prefinal-Student | Aspiring Softaware Engineer
+- 🎓 B.Tech CSE |Prefinal-Student | Aspiring Software Engineer
 - 🔗 [LinkedIn](https://www.linkedin.com/in/vansh-arora01)
  
