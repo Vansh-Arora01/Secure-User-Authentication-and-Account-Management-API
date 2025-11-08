@@ -1,7 +1,7 @@
 # Secure-User-Authentication-and-Account-Management-API
 
 
-[![CI/CD Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github)](https://github.com/Vansh-Arora01/Secure-User-Authentication-and-Account-Management-API/actions)
+[![CI/CD Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github)]([https://github.com/Vansh-Arora01/Secure-User-Authentication-and-Account-Management-API/actions](https://github.com/Vansh-Arora01/Secure-User-Authentication-and-Account-Management-API.git))
 [![Language](https://img.shields.io/badge/language-Node.js-green?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
 [![Database](https://img.shields.io/badge/database-MongoDB-green?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)
 [![Nodemailer](https://img.shields.io/npm/v/nodemailer?style=for-the-badge&logo=npm&label=Nodemailer&color=333)](https://www.npmjs.com/package/nodemailer)
